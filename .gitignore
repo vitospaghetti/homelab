@@ -2,3 +2,12 @@
 scratch
 homelab.code-workspace
 .DS_Store
+**/*.log
+
+
+# Terraform
+**/.terraform
+**/.terraform.lock.hcl
+**/.terraform.tfstate.lock.info
+**/terraform.tfstate
+**/terraform.tfstate.backup

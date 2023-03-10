@@ -1,0 +1,25 @@
+---
+version: "3"
+
+tasks:
+  proxmox:
+    desc: Build Homelab VMs on proxmox
+    cmds:
+      - |
+        cd terraform/vms
+        terraform apply --auto-approve
+
+  proxmox:init:
+    desc: Terraform init
+    cmds:
+      - |
+        cd terraform/vms
+        terraform init
+
+
+  proxmox:destroy:
+    desc: Destroy Homelab
+    cmds:
+      - |
+        cd terraform/vms
+        terraform destroy --auto-approve        

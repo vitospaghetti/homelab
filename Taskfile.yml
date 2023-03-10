@@ -3,6 +3,7 @@ version: "3"
 
 includes:
   packer: .taskfiles/packer.yml
+  terraform: .taskfiles/terraform.yml
 
 tasks:
   default:

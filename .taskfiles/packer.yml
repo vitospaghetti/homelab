@@ -3,7 +3,7 @@ version: "3"
 
 tasks:
   bullseye:
-    desc: Build Homelab Template based on Debian Bullseye
+    desc: Build Homelab template based on Debian Bullseye
     cmds:
       - |
         cd packer
