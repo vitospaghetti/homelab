@@ -1,0 +1,56 @@
+---
+version: "3"
+
+vars:
+  PATH_ERROR: is not installed or correctly configured in PATH.
+
+tasks:
+  bullseye:
+    desc: Build Homelab template based on Debian Bullseye
+    preconditions:
+      - sh: "which ansible-playbook"
+        msg: "ansible-playbook {{.PATH_ERROR}}"
+    cmds:
+      - |
+        cd proxmox/ansible
+        ansible-playbook -i inventory.ini provision-template.yml
+
+  packer:
+    desc: Build Packer image from Debian Bullseye
+    preconditions:
+      - sh: "which packer"
+        msg: "packer {{.PATH_ERROR}}"
+    cmds:
+      - |
+        cd proxmox/packer
+        packer build -var-file=variables.json homelab.json
+
+  build:
+    desc: Build Homelab VMs on Proxmox
+    preconditions:
+      - sh: "which terraform"
+        msg: "terraform {{.PATH_ERROR}}"
+    cmds:
+      - |
+        cd proxmox/terraform
+        terraform apply --auto-approve
+
+  init:
+    desc: Terraform init
+    preconditions:
+      - sh: "which terraform"
+        msg: "terraform {{.PATH_ERROR}}"
+    cmds:
+      - |
+        cd proxmox/terraform
+        terraform init
+
+  destroy:
+    desc: Destroy Homelab
+    preconditions:
+      - sh: "which terraform"
+        msg: "terraform {{.PATH_ERROR}}"
+    cmds:
+      - |
+        cd proxmox/terraform
+        terraform destroy --auto-approve  

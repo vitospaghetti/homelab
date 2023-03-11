@@ -1,21 +1,21 @@
 variable "pm_api_url" {
   description = "Proxmox API"
   type        = string
-  sensitive   = false
+  sensitive   = true
   default     = ""
 }
 
 variable "pm_api_token_id" {
   description = "pm_api_token_id"
   type        = string
-  sensitive   = false
+  sensitive   = true
   default     = ""
 }
 
 variable "pm_api_token_secret" {
   description = "pm_api_token_id"
   type        = string
-  sensitive   = false
+  sensitive   = true
   default     = ""
 }
 
@@ -32,8 +32,8 @@ provider "proxmox" {
 terraform {
   required_providers {
     proxmox = {
-      source  = "telmate/proxmox"
-      version = "=2.9.10"
+      source  = "localhost/telmate/proxmox"
+      version = "=2.9.14"
     }
   }
 }
