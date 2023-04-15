@@ -1,0 +1,34 @@
+---
+
+- name: Build Puddy
+  hosts: localhost
+  tasks:
+    - name: Clone the template to create Puddy
+      community.general.proxmox_kvm:
+        api_user: "{{ api_user }}"
+        api_password: "{{ api_password }}"
+        api_host: "{{ api_host }}"
+        clone: bullseye-template
+        name: Puddy
+        node: pve3
+        storage: SynoSpeed
+        format: qcow2
+        timeout: 500
+
+## TODO
+## - Grab IP address and delete local SSH keys
+
+- name: Build Puddy
+  hosts: puddy
+  become: true
+  vars:
+    ansible_user: homelab
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+    ssh_public_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+  tasks:
+    - name: Ensure specific packages are installed
+      ansible.builtin.apt:
+        pkg:
+          - curl
+          - docker-compose
+        update_cache: true

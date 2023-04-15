@@ -1,0 +1,18 @@
+ansible_user: kevin
+ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+ssh_public_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+
+api_user: root@pam
+api_password: Tls!tjWO
+api_host: 192.168.3.86
+
+systemd_dir: /etc/systemd/system
+host_key_checking: False
+# ansible_python_interpreter: /usr/bin/python3
+SSHPUBLICKEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOiFruhR7sWAOKGwuFBIQ88UPQFfLq8w3SwpQrVXz8thrkp4obFEltu++xxpPQLCcImzYHqeuh9pG8HCWgH/+wE898n/3I73qAFj7dEMpT2wabepQBvNqkOSCH/N7V2CbZN68x7Qttc1//2KhrPcRFS7BTR3r0Oj1+gS9x6/Zgkc4zU6DtpL7bZPZemjCkdC6v3skdAwAKYtj/O8ZSK0SCJ8TNhpoCqICNUWRiJiME1nEk4t2Fs56iJDCvR16ovflFJi1dtcoscyI6sNDRtTf9Ag5tbecX/r5Seq628gRpWKG3bJIH5V+waABMO0ItH5P91SXKtk3ApNMBh4C+5y/uRDHLIp84d+mpnMz2W+mlRZ8VQkRMEWWFodbOjwAahjBmvSMkpG5ZVKKydF+Rh0rL8cQYqybPaBjPOczTpxR4fQqmxCc7bWSGntsG0peXvinJpL8eLE+RtS5h57PNNlu5gd5zb0DHQqP1PrmscuHvcMNed151+RrPUoL/Rg3a3PM= kevin@Kevins-MacBook-Pro.local"
+
+
+
+k3s_version: v1.24.3+k3s1
+system_timezone: "America/New_York"
+master_ip: 192.168.11.111
