@@ -1,0 +1,5 @@
+# Garbage Files
+**/.DS_Store
+
+# Local-only directories
+scratch/
