@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homelab
+  name: nginx
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/vitospaghetti/homelab
-    path: kubes/projects
+    path: kubes/apps/nginx
     targetRevision: HEAD
     directory:
       recurse: true
