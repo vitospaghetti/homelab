@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/vitospaghetti/homelab
-    path: kubes
+    path: kubes/apps
     targetRevision: HEAD
     directory:
       recurse: true
