@@ -1,28 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: nginx
-  name: nginx
-  namespace: default
-  replicas: 1
+  name: &app nginx
+spec:
   selector:
     matchLabels:
-      app: nginx
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+      app: *app
   template:
     metadata:
       labels:
-        app: nginx
+        app: *app
     spec:
       containers:
-      - image: nginx
-        imagePullPolicy: Always
-        name: nginx
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
+      - name: *app
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
