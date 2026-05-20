@@ -4,4 +4,4 @@ metadata:
   name: nginx-cm
   namespace: nginx
 data:
-  testvar: "0"
+  testvar: "9"
