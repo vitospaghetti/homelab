@@ -15,6 +15,12 @@ spec:
       containers:
       - name: *app
         image: nginx
+        env:
+          - name: TESTVAR
+            valueFrom:
+              configMapKeyRef:
+                name: nginx-cm
+                key: testvar
         resources:
           limits:
             memory: "128Mi"
